@@ -3,6 +3,7 @@ FROM ubuntu:latest
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
+    python3-venv \
     wget \
     unzip \
     curl \
@@ -21,12 +22,15 @@ RUN wget -O /tmp/chromedriver_linux64.zip https://storage.googleapis.com/chrome-
     rm /tmp/chromedriver_linux64.zip
 
 COPY requirements.txt /tmp/
-RUN pip3 install --no-cache-dir -r /tmp/requirements.txt
-
 COPY . /app
 
 WORKDIR /app
 
+RUN python3 -m venv venv && \
+    . venv/bin/activate && \
+    pip install --no-cache-dir -r /tmp/requirements.txt
+
 ENV PATH /usr/local/bin:$PATH
+ENV PATH /app/venv/bin:$PATH
 
 CMD ["pytest"]
