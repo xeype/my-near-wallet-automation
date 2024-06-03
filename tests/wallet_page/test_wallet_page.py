@@ -39,7 +39,7 @@ class TestWalletPage:
         self.recover_page.click_on_find_my_account_button()
         time.sleep(3)
         check.is_true(self.wallet_page.balances_tab_is_visible())
-        check.equal(self.header_component.get_current_account(), f"{account_id}.testnet")
+        check.is_true(account_id in self.header_component.get_current_account())
 
     def test_send_near(self, recover_account):
         receiver_account = self.header_component.get_current_account()

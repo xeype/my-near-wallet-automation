@@ -107,7 +107,7 @@ class TestCreatePage:
         self.create_page.click_on_secure_passphrase_var()
         self.create_page.click_on_continue_recovery_button()
         seed = self.create_page.get_seed_phrase()
-        helper.save_credentials(account_id, password, seed)
+        # helper.save_credentials(account_id, password, seed)
         self.create_page.click_on_continue_seed_phrase_button()
         number = int(self.create_page.get_seed_phrase_confirmation_word_number())
         self.create_page.enter_seed_confirmation_word(seed[number - 1])
