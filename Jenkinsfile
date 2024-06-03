@@ -2,9 +2,8 @@ pipeline {
     agent any
 
     environment {
-        WORKSPACE = '/var/lib/jenkins/workspace/mnw-auto'
-        ALLURE_RESULTS_DIR = '${WORKSPACE}/allure-results'
-        ALLURE_REPORT_DIR = '${WORKSPACE}/allure-report'
+        ALLURE_RESULTS_DIR = '/var/lib/jenkins/workspace/mnw-auto/allure-results'
+        ALLURE_REPORT_DIR = '/var/lib/jenkins/workspace/mnw-auto/allure-report'
     }
 
     stages {
@@ -27,7 +26,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t my-python-tests ${WORKSPACE}'
+                    sh 'docker build -t my-python-tests .'
                 }
             }
         }
