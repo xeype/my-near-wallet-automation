@@ -6,6 +6,10 @@ pipeline {
         ALLURE_REPORT_DIR = '/var/lib/jenkins/workspace/mnw-auto/allure-report'
     }
 
+    parameters {
+        string(name: 'TEST_SOURCE', defaultValue: 'tests')
+    }
+
     stages {
         stage('Clone repository') {
             steps {
@@ -26,7 +30,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t my-python-tests .'
+                    sh 'docker build --build-arg TEST_SOURCE=${params.TEST_SOURCE} -t my-python-tests .'
                 }
             }
         }
