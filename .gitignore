@@ -1,2 +1,8 @@
 venv/
 *.idea
+
+creds
+
+reports
+
+__pycache__
