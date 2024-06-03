@@ -23,8 +23,8 @@ class TestRecoverPage:
 
     def test_recover_account(self):
         self.main_page.click_on_import_account_button()
-        account_id = os.getenv("AUTOMATION_ACCOUNT_ID")
-        password = os.getenv("AUTOMATION_ACCOUNT_PASSWORD")
+        account_id = os.getenv("ACCOUNT_ID_1")
+        password = os.getenv("ACCOUNT_PASSWORD_1")
         self.create_page.enter_password(password)
         self.create_page.confirm_password(password)
         self.create_page.select_checkbox_first()

@@ -12,6 +12,8 @@ pipeline {
         string(name: 'ACCOUNT_ID_2', defaultValue: 'coursetest4', description: 'Second test user')
         password(name: 'ACCOUNT_PASSWORD_1', defaultValue: 'changeMe', description: 'First test user password')
         password(name: 'ACCOUNT_PASSWORD_2', defaultValue: 'changeMe', description: 'Second test user password')
+        password(name: 'ACCOUNT_PASSPHRASE_1', defaultValue: 'change me', description: 'First test user password')
+        password(name: 'ACCOUNT_PASSPHRASE_2', defaultValue: 'change me', description: 'Second test user password')
     }
 
     stages {
@@ -52,6 +54,8 @@ pipeline {
                      --build-arg ACCOUNT_ID_2=${params.ACCOUNT_ID_2} \
                      --build-arg ACCOUNT_PASSWORD_1=${params.ACCOUNT_PASSWORD_1} \
                      --build-arg ACCOUNT_PASSWORD_2=${params.ACCOUNT_PASSWORD_2} \
+                     --build-arg ACCOUNT_PASSPHRASE_1=${params.ACCOUNT_PASSPHRASE_1} \
+                     --build-arg ACCOUNT_PASSPHRASE_2=${params.ACCOUNT_PASSPHRASE_2} \
                      -t my-python-tests .
                     """
                 }

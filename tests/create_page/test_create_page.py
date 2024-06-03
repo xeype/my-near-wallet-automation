@@ -88,8 +88,8 @@ class TestCreatePage:
         check.not_equal(seed_before, seed_after)
 
     def test_create_account(self):
-        account_id = os.getenv("AUTOMATION_ACCOUNT_ID")
-        password = os.getenv("AUTOMATION_ACCOUNT_PASSWORD")
+        account_id = os.getenv("ACCOUNT_ID_1")
+        password = os.getenv("ACCOUNT_PASSWORD_1")
 
         self.main_page.click_on_create_account_button()
         self.create_page.enter_password(password)
@@ -99,7 +99,7 @@ class TestCreatePage:
         self.create_page.click_on_next_button()
         self.create_page.enter_account_id(account_id)
         if "Account ID is taken." in self.create_page.get_account_id_alert_text():
-            new_account_id = helper.generate_new_account_id(account_id)
+            new_account_id = helper.generate_unique_account_id(account_id)
             self.create_page.clear_account_id()
             self.create_page.enter_account_id(new_account_id)
             account_id = new_account_id
@@ -116,8 +116,8 @@ class TestCreatePage:
         check.is_true(self.wallet_page.balances_tab_is_visible())
 
     def test_create_page_layout(self):
-        account_id = os.getenv("AUTOMATION_ACCOUNT_ID")
-        password = os.getenv("AUTOMATION_ACCOUNT_PASSWORD")
+        account_id = os.getenv("ACCOUNT_ID_1")
+        password = os.getenv("ACCOUNT_PASSWORD_1")
         self.main_page.click_on_create_account_button()
         check.equal(self.create_page.get_header_message(), "Create a Password")
         check.equal(self.create_page.get_subheader_message(), "You will use this to unlock your wallet.")
@@ -140,7 +140,7 @@ class TestCreatePage:
 
         self.create_page.enter_account_id(account_id)
         if "Account ID is taken." in self.create_page.get_account_id_alert_text():
-            new_account_id = helper.generate_new_account_id(account_id)
+            new_account_id = helper.generate_unique_account_id(account_id)
             self.create_page.clear_account_id()
             self.create_page.enter_account_id(new_account_id)
             account_id = new_account_id

@@ -1,4 +1,5 @@
 import os
+import time
 
 
 def save_credentials(account_id, password, seed):
@@ -25,6 +26,14 @@ def generate_new_account_id(account_id):
     return account_id
 
 
+def generate_unique_account_id(account_id):
+    account_id = account_id[:-1]
+    timestamp = str(int(time.time() * 10000000))
+    random_num = timestamp[-10:]
+    account_id += random_num
+    return account_id
+
+
 def get_passphrase(account_id):
     cur_file_path = os.path.abspath(__file__)
     target_dir = os.path.dirname(cur_file_path).split("/")[:-1]
@@ -35,5 +44,6 @@ def get_passphrase(account_id):
         lines = f.readlines()
         return lines[-1]
 
+
 if __name__ == "__main__":
-    print(get_passphrase("coursetest2"))
+    print(generate_unique_account_id("coursetest2"))

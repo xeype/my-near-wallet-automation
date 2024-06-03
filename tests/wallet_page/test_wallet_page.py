@@ -25,19 +25,21 @@ class TestWalletPage:
     @pytest.fixture
     def recover_account(self):
         self.main_page.click_on_import_account_button()
-        account_id = os.getenv("AUTOMATION_ACCOUNT_ID")
-        password = os.getenv("AUTOMATION_ACCOUNT_PASSWORD")
+        account_id = os.getenv("ACCOUNT_ID_1")
+        password = os.getenv("ACCOUNT_PASSWORD_1")
         self.create_page.enter_password(password)
         self.create_page.confirm_password(password)
         self.create_page.select_checkbox_first()
         self.create_page.select_checkbox_second()
         self.create_page.click_on_next_button()
         self.recover_page.click_on_recover_with_passphrase()
-        passphrase = helper.get_passphrase(account_id)
+        passphrase = os.getenv("ACCOUNT_PASSPHRASE_1")
+        # passphrase = helper.get_passphrase(account_id)
         self.recover_page.enter_passphrase(passphrase)
         self.recover_page.click_on_find_my_account_button()
         time.sleep(3)
         check.is_true(self.wallet_page.balances_tab_is_visible())
+        check.equal(self.header_component.get_current_account(), f"{account_id}.testnet")
 
     def test_send_near(self, recover_account):
         receiver_account = self.header_component.get_current_account()
@@ -46,8 +48,9 @@ class TestWalletPage:
         self.header_component.click_on_account()
         self.header_component.click_on_import_account()
         self.recover_page.click_on_recover_with_passphrase()
-        second_account_id = "coursetest3"
-        passphrase = helper.get_passphrase(second_account_id)
+        second_account_id = os.getenv("ACCOUNT_ID_2")
+        passphrase = os.getenv("ACCOUNT_PASSPHRASE_2")
+        # passphrase = helper.get_passphrase(second_account_id)
         self.recover_page.enter_passphrase(passphrase)
         self.recover_page.click_on_find_my_account_button()
         time.sleep(1)
@@ -79,7 +82,7 @@ class TestWalletPage:
         check.equal(round(receiver_near_amount + 0.1, 3), round(new_receiver_near_amount, 3))
 
     def test_swap_near(self, recover_account):
-        account_password = os.getenv("AUTOMATION_ACCOUNT_PASSWORD")
+        account_password = os.getenv("ACCOUNT_PASSWORD_1")
         current_usdt_amount = self.wallet_page.get_usdt_amount()
         self.wallet_page.click_on_swap_button()
         self.wallet_page.enter_swap_amount(0.1)
@@ -97,13 +100,14 @@ class TestWalletPage:
         check.equal(round(current_usdt_amount + received_amount, 3), round(new_usdt_amount, 3))
 
     def test_change_account(self, recover_account):
-        account_id = os.getenv("AUTOMATION_ACCOUNT_ID")
+        account_id = os.getenv("ACCOUNT_ID_1")
         current_account = self.header_component.get_current_account()
         self.header_component.click_on_account()
         self.header_component.click_on_import_account()
         self.recover_page.click_on_recover_with_passphrase()
-        second_account_id = "coursetest3"
-        passphrase = helper.get_passphrase(second_account_id)
+        second_account_id = os.getenv("ACCOUNT_ID_2")
+        passphrase = os.getenv("ACCOUNT_PASSPHRASE_2")
+        # passphrase = helper.get_passphrase(second_account_id)
         self.recover_page.enter_passphrase(passphrase)
         self.recover_page.click_on_find_my_account_button()
         time.sleep(1)
@@ -112,7 +116,7 @@ class TestWalletPage:
         check.not_equal(current_account, new_account)
 
         self.header_component.click_on_account()
-        check.equal(self.header_component.get_account_ids_list(), ['coursetest3.testnet', f"{account_id}.testnet"])
+        check.equal(self.header_component.get_account_ids_list(), [f'{second_account_id}.testnet', f"{account_id}.testnet"])
         self.header_component.change_account_by_index(2)
         self.header_component.get_current_account()
         check.equal(self.header_component.get_current_account(), current_account)
