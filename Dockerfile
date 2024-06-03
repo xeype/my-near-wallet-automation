@@ -1,8 +1,6 @@
 FROM ubuntu:latest
 
 ARG TEST_SOURCE
-ENV TEST_SOURCE=${TEST_SOURCE}
-RUN echo $TEST_SOURCE
 
 RUN apt-get update && apt-get install -y \
     python3 \
@@ -40,5 +38,6 @@ ENV PATH /usr/local/bin:$PATH
 ENV PATH /app/venv/bin:$PATH
 ENV VIRTUAL_ENV="/app/venv"
 ENV PYTHONPATH="/app"
+ENV TEST_SOURCE=${TEST_SOURCE}
 
 CMD ["bash", "-c", "pytest ${TEST_SOURCE} --alluredir=/app/allure-results"]

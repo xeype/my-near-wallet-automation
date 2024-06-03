@@ -27,6 +27,17 @@ pipeline {
             }
         }
 
+        stage('Clean Allure Results') {
+            steps {
+                script {
+                    sh """
+                    #!/bin/bash
+                    rm -rf ${ALLURE_RESULTS_DIR}/*
+                    """
+                }
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 script {
