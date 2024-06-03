@@ -34,5 +34,7 @@ RUN python3 -m venv venv && \
 
 ENV PATH /usr/local/bin:$PATH
 ENV PATH /app/venv/bin:$PATH
+ENV VIRTUAL_ENV="/app/venv"
+ENV PYTHONPATH="/app"
 
 CMD ["pytest"]
