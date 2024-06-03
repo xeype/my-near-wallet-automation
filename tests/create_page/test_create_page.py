@@ -150,7 +150,8 @@ class TestCreatePage:
 
         check.equal(self.create_page.get_header_message(), "Choose a Security Method")
         check.equal(self.create_page.get_subheader_message(),
-                    "Select a method to secure and recover your account. This will be used to verify important activity, recover your account and access your account from other devices.")
+                    "Select a method to secure and recover your account. This will be used to verify important activity, "
+                    "recover your account and access your account from other devices.")
 
         check.equal(self.create_page.get_secure_passphrase_title(), "Secure Passphrase")
         check.equal(self.create_page.get_secure_passphrase_desc(), "Generate and safely store a unique passphrase.")

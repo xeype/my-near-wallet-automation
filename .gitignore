@@ -1,7 +1,7 @@
 venv/
 *.idea
 
-creds
+_creds
 
 reports
 
