@@ -37,4 +37,4 @@ ENV PATH /app/venv/bin:$PATH
 ENV VIRTUAL_ENV="/app/venv"
 ENV PYTHONPATH="/app"
 
-CMD ["pytest", "tests", "-k", "TestMainPage", "--alluredir=/app/allure-results"]
+CMD ["pytest", "tests", "--alluredir=/app/allure-results"]
