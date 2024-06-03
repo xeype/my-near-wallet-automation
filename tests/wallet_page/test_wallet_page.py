@@ -44,7 +44,7 @@ class TestWalletPage:
     def test_send_near(self, recover_account):
         receiver_account = self.header_component.get_current_account()
         receiver_near_amount = float(self.wallet_page.get_near_amount())
-
+        time.sleep(2)
         self.header_component.click_on_account()
         self.header_component.click_on_import_account()
         self.recover_page.click_on_recover_with_passphrase()
@@ -91,10 +91,10 @@ class TestWalletPage:
         time.sleep(2)
         received_amount = float(self.wallet_page.get_received_usdt_value())
         self.wallet_page.click_on_continue_button()
-        self.header_component.click_on_wallet_page_button()
         self.wallet_page.driver.refresh()
         self.wallet_page.enter_password(account_password)
         self.wallet_page.click_on_unlock_wallet_button()
+        self.header_component.click_on_wallet_page_button()
         new_usdt_amount = self.wallet_page.get_usdt_amount()
 
         check.equal(round(current_usdt_amount + received_amount, 3), round(new_usdt_amount, 3))
@@ -110,11 +110,12 @@ class TestWalletPage:
         # passphrase = helper.get_passphrase(second_account_id)
         self.recover_page.enter_passphrase(passphrase)
         self.recover_page.click_on_find_my_account_button()
-        time.sleep(1)
+        time.sleep(2)
         new_account = self.header_component.get_current_account()
 
         check.not_equal(current_account, new_account)
 
+        time.sleep(2)
         self.header_component.click_on_account()
         check.equal(self.header_component.get_account_ids_list(), [f'{second_account_id}.testnet', f"{account_id}.testnet"])
         self.header_component.change_account_by_index(2)
