@@ -49,13 +49,13 @@ pipeline {
                 script {
                     sh """
                     #!/bin/bash
-                    docker build --build-arg TEST_SOURCE=${params.TEST_SOURCE}
-                    --build-arg ACCOUNT_ID_1=${params.ACCOUNT_ID_1}
-                    --build-arg ACCOUNT_ID_2=${params.ACCOUNT_ID_2}
-                    --build-arg ACCOUNT_PASSWORD_1=${params.ACCOUNT_PASSWORD_1}
-                    --build-arg ACCOUNT_PASSWORD_2=${params.ACCOUNT_PASSWORD_2}
-                    --build-arg ACCOUNT_PASSPHRASE_1=${params.ACCOUNT_PASSPHRASE_1}
-                    --build-arg ACCOUNT_PASSPHRASE_2=${params.ACCOUNT_PASSPHRASE_2}
+                    docker build --build-arg TEST_SOURCE=${params.TEST_SOURCE} \
+                    --build-arg ACCOUNT_ID_1=${params.ACCOUNT_ID_1} \
+                    --build-arg ACCOUNT_ID_2=${params.ACCOUNT_ID_2} \
+                    --build-arg ACCOUNT_PASSWORD_1=${params.ACCOUNT_PASSWORD_1} \
+                    --build-arg ACCOUNT_PASSWORD_2=${params.ACCOUNT_PASSWORD_2} \
+                    --build-arg ACCOUNT_PASSPHRASE_1=${params.ACCOUNT_PASSPHRASE_1} \
+                    --build-arg ACCOUNT_PASSPHRASE_2=${params.ACCOUNT_PASSPHRASE_2} \
                     -t my-python-tests .
                     """
                 }
