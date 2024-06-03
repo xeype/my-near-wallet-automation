@@ -4,16 +4,16 @@ pipeline {
     environment {
         ALLURE_RESULTS_DIR = '/var/lib/jenkins/workspace/mnw-auto/allure-results'
         ALLURE_REPORT_DIR = '/var/lib/jenkins/workspace/mnw-auto/allure-report'
+        ACCOUNT_ID_1 = credentials('ACCOUNT_ID_1')
+        ACCOUNT_ID_2 = credentials('ACCOUNT_ID_2')
+        ACCOUNT_PASSWORD_1 = credentials('ACCOUNT_PASSWORD_1')
+        ACCOUNT_PASSWORD_2 = credentials('ACCOUNT_PASSWORD_2')
+        ACCOUNT_PASSPHRASE_1 = credentials('ACCOUNT_PASSPHRASE_1')
+        ACCOUNT_PASSPHRASE_2 = credentials('ACCOUNT_PASSPHRASE_2')
     }
 
     parameters {
         string(name: 'TEST_SOURCE', defaultValue: 'tests', description: 'Directory for tests')
-        string(name: 'ACCOUNT_ID_1', defaultValue: 'coursetest3', description: 'First test user')
-        string(name: 'ACCOUNT_ID_2', defaultValue: 'coursetest4', description: 'Second test user')
-        password(name: 'ACCOUNT_PASSWORD_1', defaultValue: 'changeMe', description: 'First test user password')
-        password(name: 'ACCOUNT_PASSWORD_2', defaultValue: 'changeMe', description: 'Second test user password')
-        password(name: 'ACCOUNT_PASSPHRASE_1', defaultValue: 'change me', description: 'First test user password')
-        password(name: 'ACCOUNT_PASSPHRASE_2', defaultValue: 'change me', description: 'Second test user password')
     }
 
     stages {
@@ -50,12 +50,12 @@ pipeline {
                     sh """
                     #!/bin/bash
                     docker build --build-arg TEST_SOURCE=${params.TEST_SOURCE} \
-                    --build-arg ACCOUNT_ID_1=${params.ACCOUNT_ID_1} \
-                    --build-arg ACCOUNT_ID_2=${params.ACCOUNT_ID_2} \
-                    --build-arg ACCOUNT_PASSWORD_1=${params.ACCOUNT_PASSWORD_1} \
-                    --build-arg ACCOUNT_PASSWORD_2=${params.ACCOUNT_PASSWORD_2} \
-                    --build-arg ACCOUNT_PASSPHRASE_1="${params.ACCOUNT_PASSPHRASE_1}" \
-                    --build-arg ACCOUNT_PASSPHRASE_2="${params.ACCOUNT_PASSPHRASE_2}" \
+                    --build-arg ACCOUNT_ID_1=${ACCOUNT_ID_1} \
+                    --build-arg ACCOUNT_ID_2=${ACCOUNT_ID_2} \
+                    --build-arg ACCOUNT_PASSWORD_1=${ACCOUNT_PASSWORD_1} \
+                    --build-arg ACCOUNT_PASSWORD_2=${ACCOUNT_PASSWORD_2} \
+                    --build-arg ACCOUNT_PASSPHRASE_1="${ACCOUNT_PASSPHRASE_1}" \
+                    --build-arg ACCOUNT_PASSPHRASE_2="${ACCOUNT_PASSPHRASE_2}" \
                     -t my-python-tests \
                     .
                     """
