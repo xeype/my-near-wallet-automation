@@ -9,7 +9,7 @@ class HeaderComponentLocators:
     EXPLORE_PAGE_BUTTON = (By.XPATH, "//a[contains(text(), 'Explore')]")
     ACCOUNT_PAGE_BUTTON = (By.XPATH, "//a[contains(text(), 'Account')]")
     SUPPORT_PAGE_BUTTON = (By.XPATH, "//a[contains(text(), 'Support')]")
-    ACCOUNT = (By.XPATH, "(//div[@data-test-id='currentUser'])[1]")
+    ACCOUNT = (By.XPATH, "//*[@id='nav-container']/div[1]/div[5]/div[1]")
     IMPORT_ACCOUNT = (By.XPATH, "(//button[contains(text(), 'Import Account')])[1]")
     ACCOUNT_IDS = (By.XPATH, "//div[@id='desktop-menu']//div[@class='accounts']//div[@class='account-id']")
 

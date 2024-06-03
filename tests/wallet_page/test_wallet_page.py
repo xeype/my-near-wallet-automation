@@ -44,7 +44,6 @@ class TestWalletPage:
     def test_send_near(self, recover_account):
         receiver_account = self.header_component.get_current_account()
         receiver_near_amount = float(self.wallet_page.get_near_amount())
-        time.sleep(2)
         self.header_component.click_on_account()
         self.header_component.click_on_import_account()
         self.recover_page.click_on_recover_with_passphrase()
@@ -115,7 +114,6 @@ class TestWalletPage:
 
         check.not_equal(current_account, new_account)
 
-        time.sleep(2)
         self.header_component.click_on_account()
         check.equal(self.header_component.get_account_ids_list(), [f'{second_account_id}.testnet', f"{account_id}.testnet"])
         self.header_component.change_account_by_index(2)
