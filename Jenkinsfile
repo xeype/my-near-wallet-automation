@@ -34,7 +34,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    sh 'docker run --rm -v ${ALLURE_RESULTS_DIR}:/app/allure-results my-python-tests'
+                    sh 'docker run -e TEST_SOURCE=${TEST_SOURCE} --rm -v ${ALLURE_RESULTS_DIR}:/app/allure-results my-python-tests'
                 }
             }
         }
