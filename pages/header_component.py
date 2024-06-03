@@ -49,7 +49,7 @@ class HeaderComponentHelper(BasePage):
         return self.find_element(HeaderComponentLocators.SUPPORT_PAGE_BUTTON).click()
 
     def click_on_account(self):
-        return self.find_element(HeaderComponentLocators.ACCOUNT).click()
+        return self.find_element_clickable(HeaderComponentLocators.ACCOUNT).click()
 
     def click_on_import_account(self):
         return self.find_element(HeaderComponentLocators.IMPORT_ACCOUNT).click()
