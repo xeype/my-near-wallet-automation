@@ -1,6 +1,7 @@
 FROM ubuntu:latest
 
-ARG TEST_SOURCE
+ENV TEST_SOURCE=$TEST_SOURCE
+RUN echo $TEST_SOURCE
 
 RUN apt-get update && apt-get install -y \
     python3 \
