@@ -1,6 +1,10 @@
 FROM ubuntu:latest
 
 ARG TEST_SOURCE
+ARG ACCOUNT_ID_1
+ARG ACCOUNT_ID_2
+ARG ACCOUNT_PASSWORD_1
+ARG ACCOUNT_PASSWORD_2
 
 RUN apt-get update && apt-get install -y \
     python3 \
@@ -39,5 +43,9 @@ ENV PATH /app/venv/bin:$PATH
 ENV VIRTUAL_ENV="/app/venv"
 ENV PYTHONPATH="/app"
 ENV TEST_SOURCE=${TEST_SOURCE}
+ENV ACCOUNT_ID_1=${ACCOUNT_ID_1}
+ENV ACCOUNT_ID_2=${ACCOUNT_ID_2}
+ENV ACCOUNT_PASSWORD_1=${ACCOUNT_PASSWORD_1}
+ENV ACCOUNT_PASSWORD_2=${ACCOUNT_PASSWORD_2}
 
 CMD ["bash", "-c", "pytest ${TEST_SOURCE} --alluredir=/app/allure-results"]

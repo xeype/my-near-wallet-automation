@@ -8,6 +8,10 @@ pipeline {
 
     parameters {
         string(name: 'TEST_SOURCE', defaultValue: 'tests', description: 'Directory for tests')
+        string(name: 'ACCOUNT_ID_1', defaultValue: 'coursetest3', description: 'First test user')
+        string(name: 'ACCOUNT_ID_2', defaultValue: 'coursetest4', description: 'Second test user')
+        password(name: 'ACCOUNT_PASSWORD_1', defaultValue: 'changeMe', description: 'First test user password')
+        password(name: 'ACCOUNT_PASSWORD_2', defaultValue: 'changeMe', description: 'Second test user password')
     }
 
     stages {
@@ -43,7 +47,12 @@ pipeline {
                 script {
                     sh """
                     #!/bin/bash
-                    docker build --build-arg TEST_SOURCE=${params.TEST_SOURCE} -t my-python-tests .
+                    docker build --build-arg TEST_SOURCE=${params.TEST_SOURCE} \
+                     --build-arg ACCOUNT_ID_1=${params.ACCOUNT_ID_1} \
+                     --build-arg ACCOUNT_ID_2=${params.ACCOUNT_ID_2} \
+                     --build-arg ACCOUNT_PASSWORD_1=${params.ACCOUNT_PASSWORD_1} \
+                     --build-arg ACCOUNT_PASSWORD_2=${params.ACCOUNT_PASSWORD_2} \
+                     -t my-python-tests .
                     """
                 }
             }
