@@ -1,6 +1,7 @@
 FROM ubuntu:latest
 
-ENV TEST_SOURCE=$TEST_SOURCE
+ARG TEST_SOURCE
+ENV TEST_SOURCE=${TEST_SOURCE}
 RUN echo $TEST_SOURCE
 
 RUN apt-get update && apt-get install -y \
@@ -40,4 +41,4 @@ ENV PATH /app/venv/bin:$PATH
 ENV VIRTUAL_ENV="/app/venv"
 ENV PYTHONPATH="/app"
 
-CMD ["pytest", "$TEST_SOURCE", "--alluredir=/app/allure-results"]
+CMD ["pytest $TEST_SOURCE", "--alluredir=/app/allure-results"]

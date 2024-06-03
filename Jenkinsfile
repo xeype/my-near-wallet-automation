@@ -32,7 +32,7 @@ pipeline {
                 script {
                     sh """
                     #!/bin/bash
-                    docker build --build-arg TEST_SOURCE=$params.TEST_SOURCE -t my-python-tests .
+                    docker build --build-arg TEST_SOURCE=${params.TEST_SOURCE} -t my-python-tests .
                     """
                 }
             }
