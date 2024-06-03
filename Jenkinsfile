@@ -56,7 +56,8 @@ pipeline {
                     --build-arg ACCOUNT_PASSWORD_2=${params.ACCOUNT_PASSWORD_2} \
                     --build-arg ACCOUNT_PASSPHRASE_1=${params.ACCOUNT_PASSPHRASE_1} \
                     --build-arg ACCOUNT_PASSPHRASE_2=${params.ACCOUNT_PASSPHRASE_2} \
-                    -t my-python-tests .
+                    -t my-python-tests \
+                    .
                     """
                 }
             }
