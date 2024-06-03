@@ -7,7 +7,7 @@ pipeline {
     }
 
     parameters {
-        string(name: 'TEST_DIR', defaultValue: 'tests', description: 'Directory for tests')
+        string(name: 'TEST_SOURCE', defaultValue: 'tests', description: 'Directory for tests')
     }
 
     stages {
@@ -30,7 +30,10 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build --build-arg TEST_SOURCE=${params.TEST_SOURCE} -t my-python-tests .'
+                    sh """
+                    #!/bin/bash
+                    docker build --build-arg TEST_SOURCE=${params.TEST_SOURCE} -t my-python-tests .
+                    """
                 }
             }
         }
