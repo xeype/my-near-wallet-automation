@@ -20,7 +20,8 @@ RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add
 RUN wget -O /tmp/chromedriver_linux64.zip https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.141/linux64/chromedriver-linux64.zip && \
     unzip /tmp/chromedriver_linux64.zip -d /usr/local/bin/ && \
     rm /tmp/chromedriver_linux64.zip \
-    mv /usr/local/bin/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+
+RUN mv /usr/local/bin/chromedriver-linux64/chromedriver /usr/local/bin/
 
 COPY requirements.txt /tmp/
 COPY . /app
