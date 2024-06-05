@@ -11,7 +11,7 @@ ARG ACCOUNT_PK_1
 ARG ACCOUNT_PK_2
 
 RUN apt-get -y update && apt -get install software-properties-common \
-&& add-apt-repository ppa:deadsnakes/ppa && apt install python3.10 \
+&& add-apt-repository ppa:deadsnakes/ppa && apt install python3.10
 
 RUN apt-get update && apt-get install -y \
     python3-pip \
