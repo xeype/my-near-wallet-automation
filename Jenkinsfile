@@ -10,6 +10,8 @@ pipeline {
         ACCOUNT_PASSWORD_2 = credentials('ACCOUNT_PASSWORD_2')
         ACCOUNT_PASSPHRASE_1 = credentials('ACCOUNT_PASSPHRASE_1')
         ACCOUNT_PASSPHRASE_2 = credentials('ACCOUNT_PASSPHRASE_2')
+        ACCOUNT_PK_1 = credentials('ACCOUNT_PK_1')
+        ACCOUNT_PK_2 = credentials('ACCOUNT_PK_2')
     }
 
     parameters {
@@ -56,6 +58,8 @@ pipeline {
                     --build-arg ACCOUNT_PASSWORD_2=${ACCOUNT_PASSWORD_2} \
                     --build-arg ACCOUNT_PASSPHRASE_1="${ACCOUNT_PASSPHRASE_1}" \
                     --build-arg ACCOUNT_PASSPHRASE_2="${ACCOUNT_PASSPHRASE_2}" \
+                    --build-arg ACCOUNT_PK_1="${ACCOUNT_PK_1}" \
+                    --build-arg ACCOUNT_PK_2="${ACCOUNT_PK_2}" \
                     -t my-python-tests \
                     .
                     """

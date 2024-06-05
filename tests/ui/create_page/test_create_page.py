@@ -7,7 +7,7 @@ from pytest_check import check
 from pages.main_page import MainPageHelper
 from pages.create_page import CreatePageHelper
 from pages.wallet_page import WalletPageHelper
-from utils import helper
+from tests.ui.utils import helper
 
 
 @pytest.mark.login

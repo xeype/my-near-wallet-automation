@@ -8,7 +8,6 @@ from pages.create_page import CreatePageHelper
 from pages.main_page import MainPageHelper
 from pages.recover_page import RecoverPageHelper
 from pages.wallet_page import WalletPageHelper
-from utils import helper
 
 
 class TestRecoverPage:

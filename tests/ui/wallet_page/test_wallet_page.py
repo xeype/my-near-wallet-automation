@@ -9,7 +9,6 @@ from pages.header_component import HeaderComponentHelper
 from pages.main_page import MainPageHelper
 from pages.recover_page import RecoverPageHelper
 from pages.wallet_page import WalletPageHelper
-from utils import helper
 
 
 class TestWalletPage:
