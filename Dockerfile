@@ -10,12 +10,14 @@ ARG ACCOUNT_PASSPHRASE_2
 ARG ACCOUNT_PK_1
 ARG ACCOUNT_PK_2
 
+RUN apt-get update && apt-get install -y \
+    software-properties-common && \
+    add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update && \
+    apt-get install -y python3.10 python3.10-venv python3.10-dev
 
 RUN apt-get update && apt-get install -y \
-    python3.10 \
     python3-pip \
-    python3.10-venv \
-    python3.10-dev \
     wget \
     unzip \
     curl \
