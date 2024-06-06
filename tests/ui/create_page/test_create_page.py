@@ -182,4 +182,4 @@ class TestCreatePage:
         check.is_true("Word" in self.create_page.get_seed_phrase_confirmation_word_text())
 
         check.equal(self.create_page.get_verify_and_complete_button_text(), "Verify & Complete")
-        check.equal(self.create_page.get_start_over_button_text(), "Start over")
+        check.equal(self.create_page.get_start_over_button_text(), "Start overr")
