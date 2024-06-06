@@ -39,12 +39,12 @@ class TestCreatePage:
         self.create_page.enter_password(password)
         self.create_page.confirm_password(password)
         if password == "passwor":
-            check.is_true(self.create_page.get_password_rule_is_visible())
+            check.is_true(self.create_page.is_password_rule_visible())
             check.equal(self.create_page.get_password_rule_message(), "At least 8 characters")
         elif password == "password":
-            check.is_false(self.create_page.get_password_rule_is_visible())
+            check.is_false(self.create_page.is_password_rule_visible())
         elif password == "password1":
-            check.is_false(self.create_page.get_password_rule_is_visible())
+            check.is_false(self.create_page.is_password_rule_visible())
 
     @pytest.mark.parametrize("account_id", ["@coursetest",
                                             "COURSETEST", ".coursetest",

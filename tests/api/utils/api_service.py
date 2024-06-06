@@ -1,8 +1,11 @@
+import allure
+
 from tests.api.utils.api_helper import APIHelper
 
 helper = APIHelper()
 
 
+@allure.step("Invoke viewAccessKey request")
 def view_access_key(sender_id, public_key):
     if ".testnet" not in sender_id:
         sender_id = f"{sender_id}.testnet"
@@ -22,6 +25,7 @@ def view_access_key(sender_id, public_key):
     return response
 
 
+@allure.step("Invoke viewAccessKeyList request")
 def view_access_key_list(sender_id):
     if ".testnet" not in sender_id:
         sender_id = f"{sender_id}.testnet"
@@ -39,6 +43,7 @@ def view_access_key_list(sender_id):
     return response
 
 
+@allure.step("Invoke viewAccount request")
 def view_account(sender_id):
     if ".testnet" not in sender_id:
         sender_id = f"{sender_id}.testnet"
@@ -56,6 +61,7 @@ def view_account(sender_id):
     return response
 
 
+@allure.step("Invoke viewAccountChanges request")
 def view_account_changes(account_ids, block_id):
     for index, account_id in enumerate(account_ids):
         if ".testnet" not in account_id:
@@ -75,6 +81,7 @@ def view_account_changes(account_ids, block_id):
     return response
 
 
+@allure.step("Send transaction")
 def send_transaction(signed_transaction_base64):
     json = {
         "jsonrpc": "2.0",
