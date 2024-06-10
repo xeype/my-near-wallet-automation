@@ -33,8 +33,8 @@ Before you begin, ensure you have the following installed on your system:
 Clone the project repository from GitHub.
 
 ```bash
-git clone https://github.com/your-repository.git
-cd your-repository
+git clone https://github.com/xeype/my-near-wallet-automation.git
+cd my-near-wallet-automation
 ````
 
 ## 2. Create a Virtual Environment
@@ -51,17 +51,17 @@ pip install -r requirements.txt
 ```
 
 ## 4. Ensure that ChromeDriver is installed and available in your system's PATH
-
+Specify the version of chromedriver and install the ChromeDriver.
 ```bash
 # Download ChromeDriver
-wget -O /tmp/chromedriver_linux64.zip https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.141/linux64/chromedriver-linux64.zip
+wget -O /tmp/chromedriver_linux64.zip https://storage.googleapis.com/chrome-for-testing-public/12x.x.xxxx.xxx/linux64/chromedriver-linux64.zip
 unzip /tmp/chromedriver_linux64.zip -d /usr/local/bin/
 rm /tmp/chromedriver_linux64.zip
 
 # Move ChromeDriver to /usr/local/bin
 mv /usr/local/bin/chromedriver-linux64/chromedriver /usr/local/bin/
 ```
-
+- Versions are available at the [Chrome for Testing](https://googlechromelabs.github.io/chrome-for-testing/)
 ## 5. Configuration
 Configure your test environment by setting the necessary environment variables. You can use a .env file or export variables directly in your terminal.
 
