@@ -2,6 +2,20 @@
 
 This guide will help you set up a my-near-wallet-automation test framework. Follow the steps below to get started.
 
+## Table of Contents
+0. [Prerequisites](#Prerequisites)
+1. [Clone the Repository](#1-clone-the-repository)
+2. [Create a Virtual Environment](#2-create-a-virtual-environment)
+3. [Install Dependencies](#3-install-dependencies)
+4. [Install ChromeDriver](#4-install-chromedriver)
+5. [Configuration](#5-configuration)
+6. [Running Tests](#6-running-tests)
+7. [Generate Allure Reports](#7-generate-allure-reports)
+8. [Docker Setup (Optional)](#8-docker-setup-optional)
+    - [Build the Docker Image](#build-the-docker-image)
+    - [Run the Docker container](#run-the-docker-container)
+
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed on your system:
