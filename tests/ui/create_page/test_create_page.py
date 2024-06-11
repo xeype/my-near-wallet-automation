@@ -28,7 +28,7 @@ class TestCreatePage:
         self.create_page.select_checkbox_first()
         self.create_page.select_checkbox_second()
         self.create_page.click_on_next_button()
-        self.create_page.enter_account_id("coursetest")
+        self.create_page.enter_account_id("YmIesC7W")
         self.create_page.click_on_reserve_button()
         self.create_page.click_on_secure_passphrase_var()
         self.create_page.click_on_continue_recovery_button()
