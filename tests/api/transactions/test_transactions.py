@@ -6,7 +6,7 @@ from tests.api.utils import helper
 import tests.api.utils.api_service as service
 
 
-class TestAccounts:
+class TestTransactions:
 
     def test_send_transaction(self):
         sender_id = os.getenv("ACCOUNT_ID_1")
